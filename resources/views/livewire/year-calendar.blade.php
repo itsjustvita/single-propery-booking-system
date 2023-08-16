@@ -1,4 +1,4 @@
-<div class="p-6 bg-white rounded-lg shadow-md">
+<div class="p-6">
     <div class="mb-4">
         <label for="year" class="block text-gray-700 text-sm font-bold mb-2">Jahr:</label>
         <select wire:model="year" class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
@@ -8,9 +8,9 @@
         </select>
     </div>
 
-    <div class="grid grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         @foreach ($months as $month => $days)
-            <div class="col-span-1">
+            <div class="col-span-1 shadow-lg p-4">
                 <h2 class="text-xl font-semibold mb-3">{{ $month }}</h2>
 
                 <div class="grid grid-cols-7 gap-1 border-b pb-2 mb-2">
