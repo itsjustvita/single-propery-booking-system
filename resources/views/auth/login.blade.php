@@ -10,13 +10,13 @@
 
         <!-- Email Address -->
         <div>
-            <x-text-input id="email" class="rounded-3xl border-none bg-green-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="E-Mail" />
+            <x-text-input id="email" class="rounded-3xl text-white border-none bg-green-400 bg-opacity-50 px-6 py-2 text-center  placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="E-Mail" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-text-input id="password" class="rounded-3xl border-none bg-green-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md"
+            <x-text-input id="password" class="rounded-3xl border-none text-white bg-green-400 bg-opacity-50 px-6 py-2 text-center placeholder-slate-200 shadow-lg outline-none backdrop-blur-md"
                             type="password"
                             name="password"
                             required autocomplete="current-password" placeholder="*********" />

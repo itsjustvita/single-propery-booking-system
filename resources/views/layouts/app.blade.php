@@ -16,7 +16,7 @@
     @livewireStyles
 </head>
 <body class="font-sans antialiased">
-<div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+<div class="min-h-screen bg-gray-100 dark:bg-gray-900 bg-no-repeat bg-cover" style="background-image:url('{{ asset('assets/img/huette_bg_1.jpg') }}')">
     @include('layouts.navigation')
 
     <!-- Page Heading -->
