@@ -11,12 +11,25 @@ class BookingController extends Controller
 
     public function store(Request $request) {
         $user_id = auth()->user()->id;
-        $data = $request->validate([
-            'start_date' => 'required|date'
+
+        $dates = explode('bis', $request->input('start_date'));
+        $start_date = trim($dates[0]);
+        $end_date = trim($dates[1]);
+
+        $start_date_formatted = date('Y-m-d', strtotime($start_date));
+        $end_date_formatted = date('Y-m-d', strtotime($end_date));
+
+        $request->merge([
+            'start_date' => $start_date_formatted,
+            'end_date' => $end_date_formatted,
         ]);
 
-        $data['user_id'] = 1;
-        $data['end_date'] = date('Y-m-d', strtotime($data['start_date']. ' + 1 days'));
+        $data = $request->validate([
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ]);
+
+        $data['user_id'] = $user_id;
 
         Booking::create($data);
 

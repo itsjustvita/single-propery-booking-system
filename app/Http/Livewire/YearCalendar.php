@@ -50,10 +50,28 @@ class YearCalendar extends Component
 
     private function loadBookings()
     {
-        $this->bookedDates = Booking::whereYear('start_date', $this->year)
-            ->pluck('start_date')
-            ->all();
+        $bookedRanges = Booking::whereYear('start_date', $this->year)
+            ->orWhereYear('end_date', $this->year)
+            ->select(['start_date', 'end_date'])
+            ->get();
+
+        $bookedDates = [];
+
+        foreach ($bookedRanges as $range) {
+            $period = new \DatePeriod(
+                new \DateTime($range->start_date),
+                new \DateInterval('P1D'),
+                (new \DateTime($range->end_date))->modify('+1 day')
+            );
+
+            foreach ($period as $date) {
+                $bookedDates[] = $date->format('Y-m-d');
+            }
+        }
+
+        $this->bookedDates = array_unique($bookedDates);
     }
+
 
     public function render()
     {
