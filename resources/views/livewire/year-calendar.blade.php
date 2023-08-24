@@ -48,7 +48,7 @@
         class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50"
         @click.away="openModal = false"
     >
-        <div class="rounded-xl text-white bg-gray-800 bg-opacity-50 px-16 py-10 shadow-lg backdrop-blur-md max-sm:px-8">
+        <div class="rounded-xl text-white bg-gray-800 bg-opacity-50 px-8 py-10 shadow-lg backdrop-blur-md max-sm:px-8">
             <h3 class="text-lg font-semibold mb-4">Buchung für: <span id="displayDate" x-text="displayDate"></span></h3>
 
             <form action="/bookings" method="POST">
@@ -67,8 +67,18 @@
                             </div>
                         </div>
 
+
                     </div>
+
+                </div>
+                <div class="mb-4">
+                    <div class="input">
+                        <textarea name="message" id="message" cols="20" rows="5" class="rounded-3xl text-white border-none bg-green-400 bg-opacity-50 px-6 py-2 text-center  placeholder-slate-200 shadow-lg outline-none backdrop-blur-md" placeholder="Nachricht"></textarea>
+                    </div>
+                </div>
+                <div class="mb-4">
                     <button type="submit" class="rounded-3xl mt-4 bg-green-600 bg-opacity-50 px-10 py-2 text-white shadow-xl backdrop-blur-md transition-colors duration-300 hover:bg-green-800">Buchen</button>
+
                 </div>
             </form>
             <button @click="openModal = false" class="absolute top-4 right-4">✕</button>
